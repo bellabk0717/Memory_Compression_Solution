@@ -1,0 +1,9 @@
+# --- Core runtime ---
+streamlit>=1.30.0
+pandas>=2.0.0
+
+# --- LLM-based summarization (optional, used in CLI llm/auto mode) ---
+openai>=1.0.0
+
+# --- Utilities ---
+python-dotenv>=1.0.0

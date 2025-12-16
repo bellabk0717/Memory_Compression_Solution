@@ -1,0 +1,53 @@
+{
+  "user_memory": {
+    "company_profile": {
+      "type": "B2B",
+      "company_size": 200,
+      "sales_team_size": 50
+    },
+    "technical_constraints": {
+      "deployment": "cloud",
+      "data_residency": "China",
+      "it_capability": "no_internal_it"
+    },
+    "commercial_constraints": {
+      "budget": "20万/年"
+    }
+  },
+  "conversation_summary": {
+    "pain_points": [
+      "经常撞单，客户跟进记录也不全，老板想看报表也出不来",
+      "最好能有专人对接，有问题能及时响应",
+      "对的，你总结得很准确。还有个问题，后续如果要加功能，比如加个审批流，怎么收费？"
+    ],
+    "requirements": [
+      "对的，你总结得很准确。还有个问题，后续如果要加功能，比如加个审批流，怎么收费？",
+      "暂时不需要，但可能半年后会用到，先了解一下"
+    ],
+    "constraints": [
+      "对，必须存国内，这个是公司的硬性要求"
+    ],
+    "timeline": "最好春节前能上线，还有两个月时间",
+    "future_considerations": [
+      "暂时不需要，但可能半年后会用到，先了解一下"
+    ]
+  },
+  "recent_messages": [
+    {
+      "role": "user",
+      "content": "暂时没有了，你能推荐几个合适的产品让我们对比下吗？"
+    },
+    {
+      "role": "assistant",
+      "content": "根据您的需求，建议重点看：1. 销售易-性价比高，企微集成好；2. 纷享销客-功能全面，大客户案例多；3. Zoho CRM-国际品牌，易用性强。这三家都支持国内数据存储和云部署，可以分别约个演示对比下。"
+    },
+    {
+      "role": "user",
+      "content": "好的谢谢，我先去约演示，有问题再找你"
+    },
+    {
+      "role": "assistant",
+      "content": "好的，祝您选型顺利！有任何问题随时联系。"
+    }
+  ]
+}

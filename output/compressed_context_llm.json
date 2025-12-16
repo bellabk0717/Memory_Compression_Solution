@@ -1,0 +1,53 @@
+{
+  "user_memory": {
+    "company_profile": {
+      "type": "B2B",
+      "company_size": 200,
+      "sales_team_size": 50
+    },
+    "technical_constraints": {
+      "deployment": "cloud",
+      "data_residency": "China",
+      "it_capability": "no_internal_it"
+    },
+    "commercial_constraints": {
+      "budget": "20万/年"
+    }
+  },
+  "conversation_summary": {
+    "pain_points": [
+      "现有客户管理方式效率低，容易出现撞单和数据分散问题"
+    ],
+    "requirements": [
+      "需要支持移动端使用",
+      "需要集成企业微信",
+      "希望使用现成产品而非定制开发"
+    ],
+    "constraints": [
+      "数据必须存储在国内",
+      "云端部署，缺乏内部 IT 运维能力"
+    ],
+    "timeline": "期望在春节前上线（约两个月）",
+    "future_considerations": [
+      "未来可能需要审批流功能"
+    ]
+  },
+  "recent_messages": [
+    {
+      "role": "user",
+      "content": "暂时没有了，你能推荐几个合适的产品让我们对比下吗？"
+    },
+    {
+      "role": "assistant",
+      "content": "根据您的需求，建议重点看：1. 销售易-性价比高，企微集成好；2. 纷享销客-功能全面，大客户案例多；3. Zoho CRM-国际品牌，易用性强。这三家都支持国内数据存储和云部署，可以分别约个演示对比下。"
+    },
+    {
+      "role": "user",
+      "content": "好的谢谢，我先去约演示，有问题再找你"
+    },
+    {
+      "role": "assistant",
+      "content": "好的，祝您选型顺利！有任何问题随时联系。"
+    }
+  ]
+}
