@@ -1,36 +1,71 @@
 # Memory Compression with Layered Architecture
 
-> Note on Project Scope
-> 
+> ⚠️ **Project Scope Notice**  
+> This project is intentionally designed as a **foundational and exploratory implementation**.  
+>  
+> Its primary goal is to demonstrate **how to reason about memory compression under context constraints**,  
+> including problem decomposition, architectural trade-offs, and evaluation design —  
+> **not** to deliver a production-ready system.
 
-This project is intentionally designed as a **foundational and exploratory implementation**.
+---
 
-Its primary goal is to demonstrate **how to reason about memory compression under context constraints**, including problem decomposition, architectural trade-offs, and evaluation design —
-rather than to deliver a production-ready system.
+## 🔍 Overview 
+
+This project implements a **layered memory compression system** for LLMs,
+designed to compress multi-turn conversations under strict token limits
+while preserving **decision-critical information**.
+
+Conversation memory is decomposed into three explicit layers:
+**L01 (stable user facts)**, **L02 (semantic conversation summary)**,
+and **L03 (recent context window)**, which are assembled into the final context.
+
+The system focuses on **in-context memory compression**:
+❌ no RAG, ❌ no vector database, ❌ no retrieval.
+
+LLM usage is isolated to a single layer (L02) and executed **offline**.
+Compression quality is evaluated via **token reduction** and
+**weighted information retention**, and the full pipeline is visualized using **Streamlit**.
+
+---
+
+## 📑 Table of Contents
+
+- [Problem & Requirements](##problem--requirements)
+- [Design Goals](#design-goals)
+- [Assumptions & Scope](#assumptions--scope)
+- [Solution Overview: Layered Memory Compression](#solution-overview-layered-memory-compression)
+- [Compression Pipeline](#compression-pipeline)
+- [Evaluation Methodology](#evaluation-methodology)
+- [Final Conclusion](#final-conclusion)
+- [Streamlit Visualization](#streamlit-visualization)
+- [Limitations & Future Work](#limitations--future-work)
+
+
+---
 
 ## 1. Problem & Requirements
 
-Large language models operate under strict context length limits, while real-world conversations—especially in enterprise and decision-making scenarios—often span many turns and contain information of **uneven importance**.
+Large language models operate under strict context length limits, while real-world conversations —  
+especially in enterprise and decision-making scenarios — often span many turns and contain information of **uneven importance**.
 
 The goal of this project is to:
 
-> Compress a multi-turn conversation into a bounded token budget while preserving decision-critical information.
-> 
+> **Compress a multi-turn conversation into a bounded token budget while preserving decision-critical information.**
 
 Given a full conversation and a target token constraint, the system outputs a compressed context that can still support **correct understanding and downstream reasoning**.
 
-The core challenge is **not compression itself**, but deciding **what information deserves to survive when context is constrained**.
+The core challenge is **not compression itself**, but deciding **what information should be retained under context constraints**.
 
 ---
 
 ## 2. Design Goals
 
-This project is guided by the following design goals:
+This project is guided by the following design principles:
 
 - Preserve **key facts, constraints, and user intent** under a strict token budget
-- Make the compression process **explicit, structured, and controllable**, rather than a black-box summary
+- Make the compression process **explicit, structured, and controllable**
 - Produce outputs that are **verifiable** against known key information
-- Favor **engineering clarity and robustness** over complex or opaque techniques
+- Favor **engineering clarity and robustness** over opaque or complex techniques
 
 Rather than maximizing textual similarity, the system prioritizes **decision relevance**.
 
@@ -38,39 +73,37 @@ Rather than maximizing textual similarity, the system prioritizes **decision rel
 
 ## 3. Assumptions & Scope
 
-To keep the system interpretable and focused, several assumptions are made:
+To keep the system interpretable and focused, the following assumptions are made:
 
 - The conversation is **task-oriented**, with identifiable goals and constraints
 - Not all dialogue turns are equally important for decision-making
-- The system does **not** rely on retrieval-augmented generation (RAG), vector databases, or long-term search
+- The system does **not** rely on retrieval-augmented generation (RAG), vector databases, or long-term retrieval
 
 Instead of attempting to recall every detail, the design emphasizes **structured memory and controlled summarization**, reflecting how production LLM systems manage context under real constraints.
 
 ---
 
-## 4. Solution Overview: Layered Memory Compression
+## 🧠 4. Solution Overview: Layered Memory Compression
 
 ### 4.1 Inspiration from Production LLM Systems
 
-Modern LLM systems such as ChatGPT do not operate on raw conversation text alone.
+Modern LLM systems (e.g., ChatGPT) do not operate on raw conversation text alone.
 
 Each response is generated from a **structured context package** composed of multiple layers with different lifetimes and priorities, including:
 
-- system and developer instructions
-- session-level metadata
-- long-term user memory
-- summarized representations of prior conversations
-- a sliding window of recent dialogue turns
+- system and developer instructions  
+- session-level metadata  
+- long-term user memory  
+- summarized representations of prior conversations  
+- a sliding window of recent dialogue turns  
 
-These layers are assembled at inference time, enabling context awareness under strict token limits.
+These layers are assembled dynamically at inference time to maintain context awareness under strict token limits.
 
 ---
 
-### 4.2 Approach of This Project
+### 4.2 Layered Approach in This Project
 
-Inspired by this architecture, the project adopts a **layered memory compression approach**.
-
-Conversation context is decomposed by **stability and relevance**:
+Inspired by this architecture, the project adopts a **layered memory compression strategy**, decomposing conversation context by **stability and relevance**:
 
 ```
 Original Conversation
@@ -121,7 +154,7 @@ Compression logic, evaluation artifacts, and visualization are **explicitly sepa
 
 ---
 
-## 5. Compression Pipeline
+## ⚙️ 5. Compression Pipeline
 
 The compression process follows a **deterministic, multi-stage pipeline** designed to enforce information prioritization under a fixed token budget.
 
@@ -239,7 +272,7 @@ All modes execute the same L01–L03 pipeline, differing only in the summarizati
 
 ---
 
-## 6. Evaluation Methodology (Core Section)
+## 📊 6. Evaluation Methodology (Core Section)
 
 Evaluation focuses on whether the system preserves **decision-critical information under a fixed token budget**, rather than surface-level textual similarity.
 
@@ -376,3 +409,4 @@ Overall, the project is a simplified project to just show the structure and meth
     - automatic importance classification
     - larger evaluation datasets
     - adaptive window strategies
+    - 
