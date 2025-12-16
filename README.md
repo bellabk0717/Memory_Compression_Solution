@@ -30,7 +30,7 @@ Compression quality is evaluated via **token reduction** and
 
 ## 📑 Table of Contents
 
-- [Problem & Requirements](##problem--requirements)
+- [Problem & Requirements](#problem--requirements)
 - [Design Goals](#design-goals)
 - [Assumptions & Scope](#assumptions--scope)
 - [Solution Overview: Layered Memory Compression](#solution-overview-layered-memory-compression)
@@ -40,10 +40,9 @@ Compression quality is evaluated via **token reduction** and
 - [Streamlit Visualization](#streamlit-visualization)
 - [Limitations & Future Work](#limitations--future-work)
 
-
 ---
 
-## 1. Problem & Requirements
+## ❓1. Problem & Requirements
 
 Large language models operate under strict context length limits, while real-world conversations —  
 especially in enterprise and decision-making scenarios — often span many turns and contain information of **uneven importance**.
@@ -58,7 +57,7 @@ The core challenge is **not compression itself**, but deciding **what informatio
 
 ---
 
-## 2. Design Goals
+## 📌2. Design Goals
 
 This project is guided by the following design principles:
 
@@ -71,7 +70,7 @@ Rather than maximizing textual similarity, the system prioritizes **decision rel
 
 ---
 
-## 3. Assumptions & Scope
+## ✂️3. Assumptions & Scope
 
 To keep the system interpretable and focused, the following assumptions are made:
 
@@ -376,7 +375,7 @@ Total weighted importance: **31**
 
 ---
 
-## 7. Final Conclusion
+## ✊ 7. Final Concl
 
 Under comparable token budgets (~70% reduction), **LLM-based compression significantly outperforms rule-based compression in weighted information retention (0.94 vs 0.45)**.
 
@@ -386,7 +385,7 @@ By isolating LLM usage to the summarization layer, the system improves compressi
 
 ---
 
-## 8. Streamlit Visualization
+## 🧩 8. Streamlit Visualization
 
 A multi-page Streamlit application (`app.py`) is provided to:
 
@@ -398,7 +397,7 @@ The app performs **no live inference** and depends only on pre-generated outputs
 
 ---
 
-## 9. Limitations & Future Work
+## 📈 9. Limitations & Future Work
 
 Overall, the project is a simplified project to just show the structure and methods. So it’s not mature.
 
