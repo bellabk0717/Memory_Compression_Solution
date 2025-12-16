@@ -24,7 +24,7 @@ The system focuses on **in-context memory compression**:
 
 LLM usage is isolated to a single layer (L02) and executed **offline**.
 Compression quality is evaluated via **token reduction** and
-**weighted information retention**, and the full pipeline is visualized using **Streamlit**.
+**weighted information retention**, and the full pipeline is visualized using **Streamlit**.(https://memorycompressionsolution-2uz7ypsadltwtpu5fqhxvo.streamlit.app/)
 
 ---
 
